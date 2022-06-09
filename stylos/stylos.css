@@ -1,0 +1,119 @@
+*/ html,
+body {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*
+    **root elements display block
+*/
+
+html,
+body {
+    display: block;
+}
+
+
+/*
+    ** Body main style
+*/
+
+body {
+    line-height: 1.317101995;
+    scroll-behavior: smooth;
+    font-family: sans-serif;
+    background-image: url(/fondo2.png);
+    background-color: #2d3677;
+}
+
+.centered-elements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    align-content: flex-end;
+}
+
+.btn {
+    position: relative;
+    display: block;
+    height: 77px;
+    width: 300px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    color: rgb(128, 0, 247);
+    font-size: 20px;
+    overflow: hidden;
+    transition: all 500ms ease;
+    border: 2px solid #ffffff;
+    margin-bottom: 20px;
+    z-index: 0;
+    font-weight: 500;
+    cursor: pointer;
+    align-content: flex-end;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    background-color: #20e2d7;
+    transition: all 500ms ease;
+    z-index: -1;
+}
+
+.btn--1:hover {
+    background-color: #20e2d7;
+    box-shadow: 0 0 10px #20e2d7, 0 0 20px #20e2d7, 0 0 20px #20e2d7;
+    color: #434343;
+}
+
+.btn--2:hover {
+    background-color: #20e2d7;
+    box-shadow: 0 0 10px #20e2d7, 0 0 20px #20e2d7, 0 0 20px #20e2d7;
+    color: #434343;
+}
+
+.btn--3:hover {
+    background-color: #20e2d7;
+    box-shadow: 0 0 10px #20e2d7, 0 0 20px #20e2d7, 0 0 20px #20e2d7;
+    color: #434343;
+}
+
+.btn--4:hover {
+    background-color: #20e2d7;
+    box-shadow: 0 0 10px #20e2d7, 0 0 20px #20e2d7, 0 0 20px #20e2d7;
+    color: #434343;
+}
+
+.btn--5:hover {
+    background-color: #20e2d7;
+    box-shadow: 0 0 10px #20e2d7, 0 0 20px #20e2d7, 0 0 20px #20e2d7;
+    color: #434343;
+}
+
+.btn--6:hover {
+    background-color: #20e2d7;
+    box-shadow: 0 0 10px #20e2d7, 0 0 20px #20e2d7, 0 0 20px #20e2d7;
+    color: #434343;
+}
+
+@keyframes shadow-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(32, 226, 215, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 8px 16px rgb(3, 255, 242);
+    }
+}
+
+body {
+    background-image: url();
+    background-size: cover;
+}

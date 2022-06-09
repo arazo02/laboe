@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de suma</title>
+    <link rel="stylesheet" href="stylos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <h1>JUEGO DE SUMA</h1>
+    <div class="container">
+        <div class="izquierdo">
+            <div class="container-operacion">
+                <span id="suma">9 + 9 =</span>
+                <span class="resultado" id="resultado"> 18</span>
+            </div>
+            <span class="msj" id="msj">
+			 		
+			 </span>
+        </div>
+
+
+        <div class="derecha">
+            <span id="op1" class="opcion" onclick="controlarRespuesta(this)">18</span>
+            <span id="op2" class="opcion" onclick="controlarRespuesta(this)">17</span>
+            <span id="op3" class="opcion" onclick="controlarRespuesta(this)">8</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+    <!-- CSS -->
+    <!-- efectos visuales -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito';
+        }
+        
+        body {
+            text-align: center;
+            color: #262626;
+            background-size: cover;
+            text-align: center;
+            font-family: calibri;
+            padding: 0;
+            margin: 0;
+            -webkit-perspective: 1000;
+            background: #000000e0;
+            min-height: 100vh;
+            background-image: url(fondo.jpg);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: calibri;
+        }
+        
+        h1 {
+            color: rgb(0, 0, 0);
+            padding: 30px;
+        }
+        
+        .container {
+            background-color: #FFC562;
+            max-width: 700px;
+            margin: auto;
+            border: 2px solid #000;
+            border-radius: 20px;
+            display: flex;
+            padding: 50px 0;
+        }
+        
+        .izquierdo {
+            width: 70%;
+            font-size: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .derecha {
+            width: 30%;
+        }
+        
+        .msj {
+            font-size: 40px;
+            height: 50px;
+        }
+        
+        .derecha {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .opcion {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #000;
+            font-size: 50px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: #000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        div {
+            display: inline-block;
+        }
+        
+        .area-tarjeta,
+        .tarjeta,
+        .cara {
+            cursor: pointer;
+            width: var(--w);
+            min-width: 150px;
+            height: var(--h);
+        }
+        
+        .tarjeta {
+            position: relative;
+            transform-style: preserve-3d;
+            animation: iniciar 2s;
+        }
+        
+        .cara {
+            position: absolute;
+            backface-visibility: hidden;
+            box-shadow: inset 0 0 0 4px rgb(0, 0, 0);
+            font-size: 500%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .trasera {
+            background-color: rgb(255, 255, 255);
+            transform: rotateY(180deg);
+        }
+        
+        .superior {
+            background: linear-gradient(rgb(236, 236, 236), rgb(96, 199, 255));
+            border-radius: 10px;
+        }
+        
+        .nuevo-juego {
+            cursor: pointer;
+            background: linear-gradient( rgb(219, 195, 88), rgb(209, 185, 78));
+            padding: 20px;
+            border-radius: 50px;
+            border: rgb(0, 0, 0) 2px solid;
+            font-size: 130%;
+        }
+        
+      
+        
+        @keyframes iniciar {
+            20%,
+            90% {
+                transform: rotateY(180deg);
+            }
+            0%,
+            100% {
+                transform: rotateY(0deg);
+            }
+        }
+    </style>
+
+
+    <!-- HTML -->
+    <!-- estructura visual -->
+
+    <div id="tablero">
+    </div>
+
+    <br>
+
+    <div class="nuevo-juego">
+
+        <a href="Index.html">
+            <div class="NEW GAME" onclick="generarTablero()"></div>
+            MORE GAMES</a>
+    </div>
+
+
+    <!-- JS -->
+    <!-- parte lógica -->
+
+    <script>
+        var num1, num2, respuesta;
+        txt_suma = document.getElementById("suma");
+        op1 = document.getElementById("op1");
+        op2 = document.getElementById("op2");
+        op3 = document.getElementById("op3");
+        txt_msj = document.getElementById("msj");
+        txt_resultado = document.getElementById("resultado");
+
+        function comenzar() {
+            txt_resultado.innerHTML = "?";
+            txt_msj.innerHTML = "";
+
+            //genera la suma - Numeros aleatorios entre 0 1 9
+            num1 = Math.round(Math.random() * 9);
+            num2 = Math.round(Math.random() * 9);
+            respuesta = num1 + num2;
+            //asignamos lo números para que se muestren
+            suma.innerHTML = num1 + " + " + num2 + " = ";
+
+            //genero un número entre 0 y 2 para colocar la opcion correcta
+            indiceOpCorrecta = Math.round(Math.random() * 2);
+            console.log(indiceOpCorrecta);
+
+            //si indiceCorrrecta es igual 0
+            if (indiceOpCorrecta == 0) {
+                op1.innerHTML = respuesta;
+                op2.innerHTML = respuesta + 1;
+                op3.innerHTML = respuesta - 1
+            }
+            if (indiceOpCorrecta == 1) {
+                op1.innerHTML = respuesta - 1;
+                op2.innerHTML = respuesta;
+                op3.innerHTML = respuesta - 2;
+            }
+            if (indiceOpCorrecta == 2) {
+                op1.innerHTML = respuesta + 2;
+                op2.innerHTML = respuesta + 3;
+                op3.innerHTML = respuesta;
+            }
+        }
+
+        function controlarRespuesta(opcionElegida) {
+
+            txt_resultado.innerHTML = opcionElegida.innerHTML;
+            if (respuesta == opcionElegida.innerHTML) {
+                txt_msj.innerHTML = "EXCELENTE!!";
+                txt_msj.style.color = "green";
+                setTimeout(comenzar, 2000);
+            } else {
+                txt_msj.innerHTML = "INTENTA DE NUEVO!!";
+                txt_msj.style.color = "red";
+                setTimeout(limpiar, 2000);
+
+            }
+        }
+
+        function limpiar() {
+            txt_resultado.innerHTML = "?";
+            txt_msj.innerHTML = "";
+        }
+
+        comenzar();
+    </script>
+
+</body>
+
+</html>
